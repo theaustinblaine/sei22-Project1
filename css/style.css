@@ -1,0 +1,35 @@
+body {
+    background-color: #89BAD9;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 150px;
+    border: red 3px solid;
+    background-color: #0C46F2
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    border: 3px solid white;
+    border-radius: 25px;
+    margin: 0 auto;
+    width: 400px;
+    height: 80px;
+}
+
+.player1{
+    background-color: #1374F2;
+
+}
+
+.player2{
+    background-color: #1374F2;
+}
