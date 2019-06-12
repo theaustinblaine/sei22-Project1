@@ -1,5 +1,6 @@
 body {
     background-color: #89BAD9;
+    font-family: 'Exo 2', sans-serif;
 }
 
 header{
@@ -8,8 +9,23 @@ header{
     align-items: center;
     margin: 0 auto;
     height: 150px;
-    border: red 3px solid;
+    /* border: red 3px solid; */
     background-color: #0C46F2
+}
+
+.player{
+    margin: 0 auto;
+    text-decoration: uppercase;
+    border: 2px black solid;
+    width: 130px;
+    text-align: center;
+}
+
+.score{
+    text-align: center;
+    font-size: 50px;
+    background-color: black;
+    color: #1374F2;
 }
 
 .title{
@@ -32,4 +48,18 @@ header{
 
 .player2{
     background-color: #1374F2;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+}
+
+#game-board{
+    display: grid;
+    background-color: #F2CB05;
+    height: 525px;
+    width: 525px;
 }
