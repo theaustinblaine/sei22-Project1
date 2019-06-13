@@ -10,7 +10,7 @@ header{
     align-items: center;
     margin: 0 auto;
     height: 150px;
-    background-color: #0C46F2
+    background-color: #0C46F2;
 }
 
 .player{
@@ -73,6 +73,7 @@ button{
 #game-board{
     display: grid;
     background-color: #F2CB05;
+    /* border: #F2CB05 5px solid; */
     height: 525px;
     width: 525px;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -82,4 +83,22 @@ button{
 .selection{
     background-color:#89BAD9;
     grid-column: 1 / span 7;
+}
+
+.empty{
+    background-color: #89BAD9;
+    border: #F2CB05 7px solid;
+    border-radius: 50px;
+}
+
+.red{
+    background-color: #BF0404;
+    border: #F2CB05 7px solid;
+    border-radius: 50px;
+}
+
+.black{
+    background-color: black;
+    border: #F2CB05 7px solid;
+    border-radius: 50px;
 }
