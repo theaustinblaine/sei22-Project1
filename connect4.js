@@ -25,10 +25,22 @@ function reset() {
 }
 reset();
 
-const spaces = document.querySelectorAll('.empty')
-// ...space
+let player1Turn = true;
+const spaces = document.querySelectorAll(".empty");
 
-spaces.forEach( space => space.addEventListener('click', function(){
-    space.classList.remove('empty')
-    space.classList.add('red')
-}));
+// Make a move function
+// If player1turn is true, change class to red and make player1turn false
+// if player1Turn is false, change class to black and make player1Turn true
+
+
+spaces.forEach(space => space.addEventListener("click", function() {
+    space.classList.remove("empty");
+    if (player1Turn === true) {
+      space.classList.add("red");
+      player1Turn=false
+    } else {
+        space.classList.add("black");
+        player1Turn=true
+    }
+  })
+);
