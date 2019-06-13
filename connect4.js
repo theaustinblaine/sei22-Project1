@@ -28,19 +28,18 @@ reset();
 let player1Turn = true;
 const spaces = document.querySelectorAll(".empty");
 
-// Make a move function
-// If player1turn is true, change class to red and make player1turn false
-// if player1Turn is false, change class to black and make player1Turn true
-
-
 spaces.forEach(space => space.addEventListener("click", function() {
     space.classList.remove("empty");
     if (player1Turn === true) {
       space.classList.add("red");
       player1Turn=false
+      document.getElementById('player1').classList.remove('activePlayer')
+      document.getElementById('player2').classList.add('activePlayer')
     } else {
         space.classList.add("black");
         player1Turn=true
+        document.getElementById('player2').classList.remove('activePlayer')
+      document.getElementById('player1').classList.add('activePlayer')
     }
   })
 );

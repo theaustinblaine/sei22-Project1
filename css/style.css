@@ -49,6 +49,12 @@ header{
     background-color: #1374F2;
 }
 
+.activePlayer{
+    background-color: #BF0404;
+    color:#F2CB05;
+    border: #BF0404 4px solid;
+}
+
 h2{
     font-size: 22px;
 }
