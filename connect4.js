@@ -39,7 +39,7 @@ function reset() {
 reset();
 
 
-let player1Turn = true;
+let isPlayer1Turn = true;
 
 document.querySelector("#game-board").addEventListener("click", function(evt) {
   let column = document.querySelectorAll(
@@ -48,9 +48,8 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
     for (let i = column.length - 1; i >= 0; i--) {
       if ((column[i].className === "empty")) {
         column[i].classList.remove("empty");
-        column[i].classList.add(`${player1Turn ? "black" : "red"}`);
+        column[i].classList.add(`${isPlayer1Turn ? "black" : "red"}`);
         break;
-        console.log(column[i])
       }
   }
 });
@@ -59,17 +58,40 @@ const spaces = document.querySelectorAll(".empty");
 
 spaces.forEach(space =>
   space.addEventListener("click", function() {
-    if (player1Turn === true) {
-      player1Turn = false;
+    if (isPlayer1Turn === true) {
+      isPlayer1Turn = false;
       document.getElementById("player1").classList.remove("activePlayer");
       document.getElementById("player2").classList.add("activePlayer");
     } else {
-      player1Turn = true;
+      isPlayer1Turn = true;
       document.getElementById("player2").classList.remove("activePlayer");
       document.getElementById("player1").classList.add("activePlayer");
     }
+    addPoint()
   })
 );
 
+// Add Point to player score on win (test with each move)
 
-// break up player move functions into smaller functions
+let player1Score = parseInt($('#player1 .score').text())
+let player2Score = parseInt($('#player2 .score').text())
+
+function addPoint(){
+    if(isPlayer1Turn===true){
+        player1Score += 1
+    } else{
+        player2Score += 1
+
+    }
+}
+
+
+// Win condition: if 4 in a row, alert 1 person winner and add point to score
+
+
+// function to check up and down match
+// use the same column, check for consecutive column index
+
+
+// function to check left to right match
+// use same rows, check for ID pattern (A0, A1, A2, A3)
