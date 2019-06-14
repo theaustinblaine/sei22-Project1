@@ -38,19 +38,18 @@ function reset() {
 
 reset();
 
-
 let isPlayer1Turn = true;
 
 document.querySelector("#game-board").addEventListener("click", function(evt) {
   let column = document.querySelectorAll(
     `[data-column="${evt.target.dataset.column}"]`
   );
-    for (let i = column.length - 1; i >= 0; i--) {
-      if ((column[i].className === "empty")) {
-        column[i].classList.remove("empty");
-        column[i].classList.add(`${isPlayer1Turn ? "black" : "red"}`);
-        break;
-      }
+  for (let i = column.length - 1; i >= 0; i--) {
+    if (column[i].className === "empty") {
+      column[i].classList.remove("empty");
+      column[i].classList.add(`${isPlayer1Turn ? "black" : "red"}`);
+      break;
+    }
   }
 });
 
@@ -59,39 +58,39 @@ const spaces = document.querySelectorAll(".empty");
 spaces.forEach(space =>
   space.addEventListener("click", function() {
     if (isPlayer1Turn === true) {
+      addPoint();
       isPlayer1Turn = false;
       document.getElementById("player1").classList.remove("activePlayer");
       document.getElementById("player2").classList.add("activePlayer");
     } else {
+      addPoint();
       isPlayer1Turn = true;
       document.getElementById("player2").classList.remove("activePlayer");
       document.getElementById("player1").classList.add("activePlayer");
     }
-    addPoint()
+    // addPoint()
   })
 );
 
 // Add Point to player score on win (test with each move)
 
-let player1Score = parseInt($('#player1 .score').text())
-let player2Score = parseInt($('#player2 .score').text())
+let player1Score = $("#player1 .score").text()
+let player2Score = $("#player2 .score").text()
 
-function addPoint(){
-    if(isPlayer1Turn===true){
-        player1Score += 1
-    } else{
-        player2Score += 1
-
-    }
+function addPoint() {
+  if (isPlayer1Turn === true) {
+      player1Score = parseInt(player1Score) + 1;
+      console.log(player1Score)
+  } else {
+      player2Score = parseInt(player2Score) + 1
+      console.log(player2Score)
+  }
 }
-
 
 // Win condition: if 4 in a row, alert 1 person winner and add point to score
 
-
 // function to check up and down match
 // use the same column, check for consecutive column index
-
 
 // function to check left to right match
 // use same rows, check for ID pattern (A0, A1, A2, A3)
