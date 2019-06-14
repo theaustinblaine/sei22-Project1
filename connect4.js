@@ -1,44 +1,48 @@
 function reset() {
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="A' + col + '" class="empty" data-attr=("col' + col + '")></div>'
+      '<div id="A' + col + '" class="empty" data-column="' + col + '"></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="B' + col + '" class="empty" data-attr=("col' + col + '")></div>'
+      '<div id="B' + col + '" class="empty" data-column="' + col + '"></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="C' + col + '" class="empty" data-attr=("col' + col + '")></div>'
+      '<div id="C' + col + '" class="empty" data-column="' + col + '")></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="D' + col + '" class="empty" data-attr=("col' + col + '")></div>'
+      '<div id="D' + col + '" class="empty" data-column="' + col + '")></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="E' + col + '" class="empty" data-attr=("col' + col + '")></div>'
+      '<div id="E' + col + '" class="empty" data-column="' + col + '")></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="F' + col + '" class="empty" data-attr=("col' + col + '")></div>'
+      '<div id="F' + col + '" class="empty" data-column="' + col + '")></div>'
     );
   }
 }
 
 reset();
 
-console.log(col0)
+
+document.querySelector("#game-board").addEventListener('click', function(evt) {
+    let stuff = document.querySelectorAll(`[data-column="${evt.target.dataset.column}"]`) 
+    console.log(stuff)
+})
 
 
 let player1Turn = true;
