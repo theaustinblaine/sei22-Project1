@@ -78,15 +78,21 @@ function addPoint() {
   if (isPlayer1Turn === true) {
       player1Score = parseInt(player1Score) + 1;
       $("#player1 .score").text(player1Score)
-      console.log(player1Score)
   } else {
       player2Score = parseInt(player2Score) + 1
       $("#player2 .score").text(player2Score)
-      console.log(player2Score)
   }
 }
 
 // Win condition: if 4 in a row, alert 1 person winner and add point to score
+let board = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+]
 
 // function to check up and down match
 // use the same column, check for consecutive column index
