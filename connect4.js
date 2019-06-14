@@ -48,13 +48,14 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
     if (column[i].className === "empty") {
       column[i].classList.remove("empty");
       column[i].classList.add(`${isPlayer1Turn ? "black" : "red"}`);
+      board[i][parseInt(evt.target.dataset.column)]= isPlayer1Turn ? "1" : "2"
+      console.log(board)
       break;
     }
   }
 });
 
 const spaces = document.querySelectorAll(".empty");
-
 spaces.forEach(space =>
   space.addEventListener("click", function() {
     if (isPlayer1Turn === true) {
