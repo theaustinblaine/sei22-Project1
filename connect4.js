@@ -38,12 +38,23 @@ function reset() {
 
 reset();
 
+// we have nodelist for each column, make event listener happen on the column
+// and say to cycle through looking for the first thing to not be empty
+// and go to the next one up
 
-document.querySelector("#game-board").addEventListener('click', function(evt) {
-    let stuff = document.querySelectorAll(`[data-column="${evt.target.dataset.column}"]`) 
-    console.log(stuff)
-})
-
+document.querySelector("#game-board").addEventListener("click", function(evt) {
+  let column = document.querySelectorAll(
+    `[data-column="${evt.target.dataset.column}"]`
+  );
+    // console.log(column.item(0));
+    for (let i=column.length -1; i>=0; i--){
+        if (column[i].className="empty"){
+            // let moveSpace = column[i - 1]
+            column[i].className="red"
+            // console.log(moveSpace)
+        }
+    }
+});
 
 let player1Turn = true;
 const spaces = document.querySelectorAll(".empty");
@@ -51,14 +62,14 @@ const spaces = document.querySelectorAll(".empty");
 spaces.forEach(space =>
   space.addEventListener("click", function() {
     if (player1Turn === true) {
-      space.classList.remove("empty");
-      space.classList.add("red");
+    //   space.classList.remove("empty");
+    //   space.classList.add("red");
       player1Turn = false;
       document.getElementById("player1").classList.remove("activePlayer");
       document.getElementById("player2").classList.add("activePlayer");
     } else if (space.className == "empty") {
-      space.classList.remove("empty");
-      space.classList.add("black");
+    //   space.classList.remove("empty");
+    //   space.classList.add("black");
       player1Turn = true;
       document.getElementById("player2").classList.remove("activePlayer");
       document.getElementById("player1").classList.add("activePlayer");
@@ -66,9 +77,24 @@ spaces.forEach(space =>
   })
 );
 
-// let boardSpace = document.getElementsByClassName("boardSpace");
+// Attempting to breakout functions:
 
-// Let column0 = []
+// function player1Move() {
+//   space.classList.remove("empty");
+//   space.classList.add("red");
+//   player1Turn = false;
+//   document.getElementById("player1").classList.remove("activePlayer");
+//   document.getElementById("player2").classList.add("activePlayer");
+// }
+
+// function player2Move(){
+//     space.classList.remove("empty");
+//     space.classList.add("black");
+//     player1Turn = true;
+//     document.getElementById("player2").classList.remove("activePlayer");
+//     document.getElementById("player1").classList.add("activePlayer");
+// }
+
 // for loop running from the bottom up looking for empty space
 // would require column to be an array
 
