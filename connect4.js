@@ -58,17 +58,14 @@ const spaces = document.querySelectorAll(".empty");
 spaces.forEach(space =>
   space.addEventListener("click", function() {
     if (isPlayer1Turn === true) {
-      addPoint();
       isPlayer1Turn = false;
       document.getElementById("player1").classList.remove("activePlayer");
       document.getElementById("player2").classList.add("activePlayer");
     } else {
-      addPoint();
       isPlayer1Turn = true;
       document.getElementById("player2").classList.remove("activePlayer");
       document.getElementById("player1").classList.add("activePlayer");
     }
-    // addPoint()
   })
 );
 
@@ -80,9 +77,11 @@ let player2Score = $("#player2 .score").text()
 function addPoint() {
   if (isPlayer1Turn === true) {
       player1Score = parseInt(player1Score) + 1;
+      $("#player1 .score").text(player1Score)
       console.log(player1Score)
   } else {
       player2Score = parseInt(player2Score) + 1
+      $("#player2 .score").text(player2Score)
       console.log(player2Score)
   }
 }
