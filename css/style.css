@@ -83,7 +83,7 @@ button{
     height: 525px;
     width: 525px;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: [column1]1fr [column2]1fr [column3]1fr [column4]1fr [column5]1fr [column6]1fr [column7]1fr;
 }
 
 .selection{
