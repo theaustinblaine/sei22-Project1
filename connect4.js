@@ -31,12 +31,24 @@ function reset() {
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="F' + col + '" class="empty" data-column="' + col + '")></div>'
-    );
-  }
+        '<div id="F' + col + '" class="empty" data-column="' + col + '")></div>'
+        );
+    }
 }
 
 reset();
+
+let board = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+]
+
+let row = board[i]
+let column = board[i][i]
 
 let isPlayer1Turn = true;
 
@@ -48,12 +60,14 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
     if (column[i].className === "empty") {
       column[i].classList.remove("empty");
       column[i].classList.add(`${isPlayer1Turn ? "black" : "red"}`);
-      board[i][parseInt(evt.target.dataset.column)]= isPlayer1Turn ? "1" : "2"
+      board[i][parseInt(evt.target.dataset.column)]= isPlayer1Turn ? "2" : "1"
       console.log(board)
       break;
     }
   }
 });
+
+// change style of player icon in header and change boolean for isPlayer1turn
 
 const spaces = document.querySelectorAll(".empty");
 spaces.forEach(space =>
@@ -86,17 +100,11 @@ function addPoint() {
 }
 
 // Win condition: if 4 in a row, alert 1 person winner and add point to score
-let board = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-]
 
 // function to check up and down match
 // use the same column, check for consecutive column index
 
 // function to check left to right match
 // use same rows, check for ID pattern (A0, A1, A2, A3)
+
+
