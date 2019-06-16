@@ -79,7 +79,7 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
       board[i][parseInt(evt.target.dataset.column)] = isPlayer1Turn ? "2" : "1";
       console.log(board);
       checkHorizontal();
-    //   checkVertical();
+      checkVertical();
       break;
     }
   }
@@ -121,6 +121,7 @@ function addPoint() {
 //need a for loop to check each individual solution
 
 //if horizontal win, alert for winner, and add a point. Then Reset the board.
+
 function checkHorizontal() {
   for (let row = 0; row < board.length; row++) {
     for (let col = 0; col < board[row].length - 3; col++) {
@@ -136,48 +137,49 @@ function checkHorizontal() {
   }
 }
 
-//ELSE IF vertical win, alert for winner, and add a point. Then Reset the board.
-// function checkVertical() {
-//   for (let row = 0; row < board.length; row++) {
-//     for (let col = 0; col < board[row].length - 3; col++) {
-//       if (
-//         board[row][col] != `0` &&
-//         board[row][col] == board[row + 1][col] &&
-//         board[row][col] == board[row + 2][col] &&
-//         board[row][col] == board[row + 3][col]
-//       ) {
-//         alert("Vertical Player Win");
-//       }
+// if vertical win, alert for winner, and add a point. Then Reset the board.
+
+function checkVertical() {
+  for (let row = 0; row < board[0].length; row++) {
+    for (let col = 0; col < board.length; col++) {
+      if (
+        board[row][col] != `0` &&
+        board[row][col] == board[row + 1][col] &&
+        board[row][col] == board[row + 2][col] &&
+        board[row][col] == board[row + 3][col]
+      ) {
+        alert("Vertical Player Win");
+      }
+    }
+  }
+}
+
+//if diagonal win, alert for winner, and add a point. Then Reset the board.
+
+//one direction
+// for (let row = 0; row < board.length; row++) {
+//   for (let col = 0; col < board[row].length; col++) {
+//     if (
+//       board[row][col] != `0` &&
+//       board[row][col] == board[row + 1][col + 1] &&
+//       board[row][col] == board[row + 2][col + 2] &&
+//       board[row][col] == board[row + 3][col + 3]
+//     ) {
+//       console.log("Player Win");
 //     }
 //   }
 // }
 
-//ELSE diagonal win, alert for winner, and add a point. Then Reset the board.
-
-//one direction
-for (let row = 0; row < board.length; row++) {
-  for (let col = 0; col < board[row].length; col++) {
-    if (
-      board[row][col] != `0` &&
-      board[row][col] == board[row + 1][col + 1] &&
-      board[row][col] == board[row + 2][col + 2] &&
-      board[row][col] == board[row + 3][col + 3]
-    ) {
-      console.log("Player Win");
-    }
-  }
-}
-
 //other direction
-for (let row = 0; row < board.length; row++) {
-  for (let col = 0; col < board[row].length; col++) {
-    if (
-      board[row][col] != `0` &&
-      board[row][col] == board[row + 1][col - 1] &&
-      board[row][col] == board[row + 2][col - 2] &&
-      board[row][col] == board[row + 3][col - 3]
-    ) {
-      console.log("Player Win");
-    }
-  }
-}
+// for (let row = 0; row < board.length; row++) {
+//   for (let col = 0; col < board[row].length; col++) {
+//     if (
+//       board[row][col] != `0` &&
+//       board[row][col] == board[row + 1][col - 1] &&
+//       board[row][col] == board[row + 2][col - 2] &&
+//       board[row][col] == board[row + 3][col - 3]
+//     ) {
+//       console.log("Player Win");
+//     }
+//   }
+// }
