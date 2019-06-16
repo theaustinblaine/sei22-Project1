@@ -1,4 +1,4 @@
-function reset() {
+function buildBoard() {
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
       '<div id="A' + col + '" class="empty" data-column="' + col + '"></div>'
@@ -34,12 +34,14 @@ function reset() {
       '<div id="F' + col + '" class="empty" data-column="' + col + '")></div>'
     );
   }
-//   let playerWin = false
 }
 
-reset();
+buildBoard();
 
+// starting variables
 
+let isPlayer1Turn = true;
+let playerWin = false;
 let board = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
@@ -49,7 +51,7 @@ let board = [
   [0, 0, 0, 0, 0, 0, 0]
 ];
 
-// button functionality
+// rules and controls button functionality
 let rules = document.getElementById("rules");
 rules.addEventListener("click", function() {
   Swal.fire(
@@ -69,10 +71,9 @@ controls.addEventListener(`click`, function() {
 });
 
 
-let isPlayer1Turn = true;
-let playerWin = false
 
 // populate board matrix with indicator of which spaces are played by each player
+// with each move, check for a win and then reset the board for the next round
 
 document.querySelector("#game-board").addEventListener("click", function(evt) {
   let column = document.querySelectorAll(
@@ -88,17 +89,24 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
       checkVertical();
       checkDiagonalTL();
       checkDiagonalTR();
-      if (playerWin===true){
+      if (playerWin === true) {
         board = [
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0]
-          ];
-        // document.getElementsByClassName('red').classList.remove('red').classList.add('empty')
-    }
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0]
+        ];
+
+        // let redSpaces = document.getElementsByClassName("red");
+        // redSpaces.classList.add("empty");
+        // document.getElementsByClassName('black').classList.add('empty')
+        // redSpaces.classList.remove("red");
+        // document.getElementsByClassName('black').classlist.remove('black')
+
+        playerWin=false
+      }
       break;
     }
   }
@@ -150,15 +158,15 @@ function checkHorizontal() {
         board[row][col] == board[row][col + 2] &&
         board[row][col] == board[row][col + 3]
       ) {
-        if(isPlayer1Turn===true){
-            Swal.fire('Player 2 Won!!')
+        if (isPlayer1Turn === true) {
+          Swal.fire("Player 2 Won!!");
         } else {
-            Swal.fire('Player 1 Won!!')
+          Swal.fire("Player 1 Won!!");
         }
         addPoint();
-        playerWin = true
+        playerWin = true;
+      }
     }
-}
   }
 }
 
@@ -173,13 +181,13 @@ function checkVertical() {
         board[row][col] == board[row + 2][col] &&
         board[row][col] == board[row + 3][col]
       ) {
-        if(isPlayer1Turn===true){
-            Swal.fire('Player 2 Won!!')
+        if (isPlayer1Turn === true) {
+          Swal.fire("Player 2 Won!!");
         } else {
-            Swal.fire('Player 1 Won!!')
+          Swal.fire("Player 1 Won!!");
         }
         addPoint();
-        // reset()
+        playerWin = true;
       }
     }
   }
@@ -197,13 +205,13 @@ function checkDiagonalTL() {
         board[row][col] == board[row + 2][col + 2] &&
         board[row][col] == board[row + 3][col + 3]
       ) {
-        if(isPlayer1Turn===true){
-            Swal.fire('Player 2 Won!!')
+        if (isPlayer1Turn === true) {
+          Swal.fire("Player 2 Won!!");
         } else {
-            Swal.fire('Player 1 Won!!')
+          Swal.fire("Player 1 Won!!");
         }
         addPoint();
-        // reset()
+        playerWin = true;
       }
     }
   }
@@ -220,16 +228,14 @@ function checkDiagonalTR() {
         board[row][col] == board[row + 2][col - 2] &&
         board[row][col] == board[row + 3][col - 3]
       ) {
-        if(isPlayer1Turn===true){
-            Swal.fire('Player 2 Won!!')
+        if (isPlayer1Turn === true) {
+          Swal.fire("Player 2 Won!!");
         } else {
-            Swal.fire('Player 1 Won!!')
+          Swal.fire("Player 1 Won!!");
         }
         addPoint();
-        // reset()
+        playerWin = true;
       }
     }
   }
 }
-
-
