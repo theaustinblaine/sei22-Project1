@@ -110,7 +110,7 @@ let player1Score = $("#player1 .score").text();
 let player2Score = $("#player2 .score").text();
 
 function addPoint() {
-  if (isPlayer1Turn === true) {
+  if (isPlayer1Turn === false) {
     player1Score = parseInt(player1Score) + 1;
     $("#player1 .score").text(player1Score);
   } else {
@@ -134,6 +134,8 @@ function checkHorizontal() {
         board[row][col] == board[row][col + 3]
       ) {
         alert("Horizontal Player Win!!");
+        addPoint();
+        // reset()
       }
     }
   }
@@ -151,6 +153,8 @@ function checkVertical() {
         board[row][col] == board[row + 3][col]
       ) {
         alert("Vertical Player Win");
+        addPoint();
+        // reset()
       }
     }
   }
@@ -169,6 +173,8 @@ function checkDiagonalTL() {
         board[row][col] == board[row + 3][col + 3]
       ) {
         alert("Diagonal 1 Player Win");
+        addPoint();
+        // reset()
       }
     }
   }
@@ -186,6 +192,8 @@ function checkDiagonalTR() {
         board[row][col] == board[row + 3][col - 3]
       ) {
         alert("Diagonal 2 Player Win");
+        addPoint();
+        // reset()
       }
     }
   }
