@@ -50,7 +50,11 @@ let board = [
 // button functionality
 let rules = document.getElementById('rules')
 rules.addEventListener("click", function(){
-    alert("Clicked rules")
+    Swal.fire(
+        'Rules',
+        'To win Combine 3 & 1 you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.',
+        'question'
+      )
 })
 
 let controls = document.getElementById('controls')
