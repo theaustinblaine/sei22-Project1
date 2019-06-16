@@ -47,9 +47,17 @@ let board = [
   [0, 0, 0, 0, 0, 0, 0]
 ];
 
-// let row = board[i]
-// let column = board[i][parseInt(evt.target.dataset.column)]
-// let column = board[1]
+// button functionality
+let rules = document.getElementById('rules')
+rules.addEventListener("click", function(){
+    alert("Clicked rules")
+})
+
+let controls = document.getElementById('controls')
+controls.addEventListener(`click`, function(){
+    alert("clicked controls")
+})
+
 
 let isPlayer1Turn = true;
 
