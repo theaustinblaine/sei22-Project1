@@ -38,6 +38,7 @@ function reset() {
 
 reset();
 
+
 let board = [
   [0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0],
@@ -133,11 +134,11 @@ function checkHorizontal() {
         board[row][col] == board[row][col + 2] &&
         board[row][col] == board[row][col + 3]
       ) {
-        alert("Horizontal Player Win!!");
+        Swal.fire('Player Won!!')
         addPoint();
         // reset()
-      }
     }
+}
   }
 }
 
@@ -152,7 +153,7 @@ function checkVertical() {
         board[row][col] == board[row + 2][col] &&
         board[row][col] == board[row + 3][col]
       ) {
-        alert("Vertical Player Win");
+        Swal.fire('Player Won!!')
         addPoint();
         // reset()
       }
@@ -172,7 +173,7 @@ function checkDiagonalTL() {
         board[row][col] == board[row + 2][col + 2] &&
         board[row][col] == board[row + 3][col + 3]
       ) {
-        alert("Diagonal 1 Player Win");
+        Swal.fire('Player Won!!')
         addPoint();
         // reset()
       }
@@ -191,10 +192,12 @@ function checkDiagonalTR() {
         board[row][col] == board[row + 2][col - 2] &&
         board[row][col] == board[row + 3][col - 3]
       ) {
-        alert("Diagonal 2 Player Win");
+        Swal.fire('Player Won!!')
         addPoint();
         // reset()
       }
     }
   }
 }
+
+
