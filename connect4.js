@@ -140,8 +140,8 @@ function checkHorizontal() {
 // if vertical win, alert for winner, and add a point. Then Reset the board.
 
 function checkVertical() {
-  for (let row = 0; row < board[0].length; row++) {
-    for (let col = 0; col < board.length; col++) {
+  for (let col = 0; col < board[0].length; col++) {
+    for (let row = 0; row < board.length - 3; row++) {
       if (
         board[row][col] != `0` &&
         board[row][col] == board[row + 1][col] &&
