@@ -48,24 +48,23 @@ let board = [
 ];
 
 // button functionality
-let rules = document.getElementById('rules')
-rules.addEventListener("click", function(){
-    Swal.fire(
-        'Rules',
-        'To win Combine 3 & 1 you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.',
-        'question'
-      )
-})
+let rules = document.getElementById("rules");
+rules.addEventListener("click", function() {
+  Swal.fire(
+    "Rules",
+    "To win Combine 3 & 1 you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.",
+    "question"
+  );
+});
 
-let controls = document.getElementById('controls')
-controls.addEventListener(`click`, function(){
-    Swal.fire(
-        'Controls',
-        'To place a checker, click anywhere within the column you want to take your move',
-        'question'
-      )
-})
-
+let controls = document.getElementById("controls");
+controls.addEventListener(`click`, function() {
+  Swal.fire(
+    "Controls",
+    "To place a checker, click anywhere within the column you want to take your move",
+    "question"
+  );
+});
 
 let isPlayer1Turn = true;
 
@@ -79,6 +78,8 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
       column[i].classList.add(`${isPlayer1Turn ? "black" : "red"}`);
       board[i][parseInt(evt.target.dataset.column)] = isPlayer1Turn ? "2" : "1";
       console.log(board);
+      checkHorizontal();
+    //   checkVertical();
       break;
     }
   }
@@ -120,32 +121,36 @@ function addPoint() {
 //need a for loop to check each individual solution
 
 //if horizontal win, alert for winner, and add a point. Then Reset the board.
-for (let row = 0; row < board.length; row++) {
-  for (let col = 0; col < board[row].length; col++) {
-    if (
-      board[row][col] != `0` &&
-      board[row][col] == board[row][col + 1] &&
-      board[row][col] == board[row][col + 2] &&
-      board[row][col] == board[row][col + 3]
-    ) {
-      console.log("Player Win");
+function checkHorizontal() {
+  for (let row = 0; row < board.length; row++) {
+    for (let col = 0; col < board[row].length - 3; col++) {
+      if (
+        board[row][col] != `0` &&
+        board[row][col] == board[row][col + 1] &&
+        board[row][col] == board[row][col + 2] &&
+        board[row][col] == board[row][col + 3]
+      ) {
+        alert("Horizontal Player Win!!");
+      }
     }
   }
 }
 
 //ELSE IF vertical win, alert for winner, and add a point. Then Reset the board.
-for (let row = 0; row < board.length; row++) {
-  for (let col = 0; col < board[row].length; col++) {
-    if (
-      board[row][col] != `0` &&
-      board[row][col] == board[row + 1][col] &&
-      board[row][col] == board[row + 2][col] &&
-      board[row][col] == board[row + 3][col]
-    ) {
-      console.log("Player Win");
-    }
-  }
-}
+// function checkVertical() {
+//   for (let row = 0; row < board.length; row++) {
+//     for (let col = 0; col < board[row].length - 3; col++) {
+//       if (
+//         board[row][col] != `0` &&
+//         board[row][col] == board[row + 1][col] &&
+//         board[row][col] == board[row + 2][col] &&
+//         board[row][col] == board[row + 3][col]
+//       ) {
+//         alert("Vertical Player Win");
+//       }
+//     }
+//   }
+// }
 
 //ELSE diagonal win, alert for winner, and add a point. Then Reset the board.
 
