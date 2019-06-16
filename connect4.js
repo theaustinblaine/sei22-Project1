@@ -59,7 +59,11 @@ rules.addEventListener("click", function(){
 
 let controls = document.getElementById('controls')
 controls.addEventListener(`click`, function(){
-    alert("clicked controls")
+    Swal.fire(
+        'Controls',
+        'To place a checker, click anywhere within the column you want to take your move',
+        'question'
+      )
 })
 
 
