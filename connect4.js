@@ -176,17 +176,17 @@ function checkDiagonalTL() {
 
 //other direction
 
-// function checkDiagonalTR() {
-//   for (let row = 0; row < board.length - 3; row++) {
-//     for (let col = 3; col < board[row].length - 3; col++) {
-//       if (
-//         board[row][col] != `0` &&
-//         board[row][col] == board[row + 1][col - 1] &&
-//         board[row][col] == board[row + 2][col - 2] &&
-//         board[row][col] == board[row + 3][col - 3]
-//       ) {
-//         alert("Diagonal 2 Player Win");
-//       }
-//     }
-//   }
-// }
+function checkDiagonalTR() {
+  for (let row = 0; row < board.length - 3; row++) {
+    for (let col = 3; col < board[row].length - 3; col++) {
+      if (
+        board[row][col] != `0` &&
+        board[row][col] == board[row + 1][col - 1] &&
+        board[row][col] == board[row + 2][col - 2] &&
+        board[row][col] == board[row + 3][col - 3]
+      ) {
+        alert("Diagonal 2 Player Win");
+      }
+    }
+  }
+}
