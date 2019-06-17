@@ -107,20 +107,20 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
       column[i].classList.add(`${isPlayer1Turn ? "black" : "red"}`);
       board[i][parseInt(evt.target.dataset.column)] = isPlayer1Turn ? "2" : "1";
       console.log(board);
-      checkHorizontal();
-      checkVertical();
-      checkDiagonalTL();
-      checkDiagonalTR();
+        checkHorizontal();
+        checkVertical();
+        checkDiagonalTL();
+        checkDiagonalTR();
       if (playerWin === true) {
         reset();
       }
-      //if all spaces are full, alert "Tie Game" Then reset
-      //   else if(document.getElementsByClassName('empty')===0){
-      //     // Swal.fire("Tie Game!");
-      //     // reset();
-      //   }
+      if (document.getElementsByClassName("empty").length === 0) {
+        Swal.fire("Tie Game!");
+        reset();
+      }
       break;
     }
+    //   if all spaces are full, alert "Tie Game" Then reset
   }
 });
 
