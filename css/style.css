@@ -97,6 +97,18 @@ button{
     border-radius: 50px;
 }
 
+.red-move{
+    background-color: lightcoral;
+    border: #F2CB05 7px solid;
+    border-radius: 50px;
+}
+
+.black-move{
+    background-color: gray ;
+    border: #F2CB05 7px solid;
+    border-radius: 50px;
+}
+
 .red{
     background-color: #BF0404;
     border: #F2CB05 7px solid;

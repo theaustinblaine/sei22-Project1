@@ -94,10 +94,43 @@ controls.addEventListener(`click`, function() {
   );
 });
 
+// event listener for mouseover/out to select the move
+document.querySelector("#game-board").addEventListener("mouseover", function(evt) {
+  // console.log('mouseover')
+  // let clicked = false;
+  let column = document.querySelectorAll(
+    `[data-column="${evt.target.dataset.column}"]`
+  );
+  for (let i = 0; i <= column.length - 1; i++) {
+    if (column[i].classList.contains("empty")) {
+      // column[i].classList.remove("empty");
+      column[i].classList.add(`${isPlayer1Turn ? "red-move" : "black-move"}`);
+    }
+    return;
+  }
+})
+
+// // mouseout
+document.querySelector("#game-board").addEventListener("mouseout", function(evt) {
+  // console.log('mouseout')
+  let column = document.querySelectorAll(
+    `[data-column="${evt.target.dataset.column}"]`
+  );
+  for (let i = 0; i <= column.length - 1; i++) {
+    if (column[i].classList.contains("red-move") || column[i].classList.contains("black-move")) {
+      column[i].classList.remove("red-move");
+      column[i].classList.remove("black-move");
+      // column[i].classList.add('empty');
+    }
+    break;
+  }
+})
+
 // populate board matrix with indicator of which spaces are played by each player
 // with each move, check for a win and then reset the board for the next round
 
 document.querySelector("#game-board").addEventListener("click", function(evt) {
+  console.log('click')
   let column = document.querySelectorAll(
     `[data-column="${evt.target.dataset.column}"]`
   );
@@ -114,15 +147,18 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
       if (playerWin === true) {
         reset();
       }
+      //   if all spaces are full, alert "Tie Game" Then reset
       if (document.getElementsByClassName("empty").length === 0) {
         Swal.fire("Tie Game!");
         reset();
       }
-      break;
+      return;
     }
-    //   if all spaces are full, alert "Tie Game" Then reset
   }
 });
+
+
+
 
 // change style of player icon in header and change boolean for isPlayer1turn
 
