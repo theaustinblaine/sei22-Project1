@@ -81,7 +81,8 @@ rules.addEventListener("click", function() {
   Swal.fire(
     "Rules",
     "To win Combine 3 & 1 you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally.",
-    "question"
+    "question",
+    "The first player to score 3 points wins the game!"
   );
 });
 
