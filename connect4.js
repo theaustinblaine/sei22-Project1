@@ -81,7 +81,7 @@ rules.addEventListener("click", function() {
   Swal.fire(
     "Rules",
     "To win Combine 3 & 1 you must be the first player to get four of your colored checkers in a row either horizontally, vertically or diagonally. The first player to score 3 points wins the game!",
-    "question",
+    "question"
   );
 });
 
@@ -114,6 +114,11 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
       if (playerWin === true) {
         reset();
       }
+      //if all spaces are full, alert "Tie Game" Then reset
+      //   else if(document.getElementsByClassName('empty')===0){
+      //     // Swal.fire("Tie Game!");
+      //     // reset();
+      //   }
       break;
     }
   }
@@ -138,28 +143,25 @@ spaces.forEach(space =>
 
 // Add Point to player score on win (test with each move)
 
-
 function addPoint() {
-
-    let player1Score = $("#player1 .score").text();
-    let player2Score = $("#player2 .score").text();
+  let player1Score = $("#player1 .score").text();
+  let player2Score = $("#player2 .score").text();
 
   if (isPlayer1Turn === false) {
     player1Score = parseInt(player1Score) + 1;
     $("#player1 .score").text(player1Score);
-    if(parseInt(player1Score)===3){
-        Swal.fire("Player 1 Wins The Game!!")
-        $("#player1 .score").text("00");
-        $("#player2 .score").text("00");
+    if (parseInt(player1Score) === 3) {
+      Swal.fire("Player 1 Wins The Game!!");
+      $("#player1 .score").text("00");
+      $("#player2 .score").text("00");
     }
   } else {
     player2Score = parseInt(player2Score) + 1;
     $("#player2 .score").text(player2Score);
-    if(parseInt(player2Score)===3){
-        Swal.fire("Player 2 Wins The Game!!")
-        $("#player1 .score").text("00");
-        $("#player2 .score").text("00");
-
+    if (parseInt(player2Score) === 3) {
+      Swal.fire("Player 2 Wins The Game!!");
+      $("#player1 .score").text("00");
+      $("#player2 .score").text("00");
     }
   }
 }
@@ -183,7 +185,7 @@ function checkHorizontal() {
         } else {
           Swal.fire("Player 1 Won This Round!!");
         }
-        addPoint();x
+        addPoint();
         playerWin = true;
       }
     }
@@ -202,10 +204,10 @@ function checkVertical() {
         board[row][col] == board[row + 3][col]
       ) {
         if (isPlayer1Turn === true) {
-            Swal.fire("Player 2 Won This Round!!");
-          } else {
-            Swal.fire("Player 1 Won This Round!!");
-          }
+          Swal.fire("Player 2 Won This Round!!");
+        } else {
+          Swal.fire("Player 1 Won This Round!!");
+        }
         addPoint();
         playerWin = true;
       }
@@ -226,10 +228,10 @@ function checkDiagonalTL() {
         board[row][col] == board[row + 3][col + 3]
       ) {
         if (isPlayer1Turn === true) {
-            Swal.fire("Player 2 Won This Round!!");
-          } else {
-            Swal.fire("Player 1 Won This Round!!");
-          }
+          Swal.fire("Player 2 Won This Round!!");
+        } else {
+          Swal.fire("Player 1 Won This Round!!");
+        }
         addPoint();
         playerWin = true;
       }
@@ -241,7 +243,7 @@ function checkDiagonalTL() {
 
 function checkDiagonalTR() {
   for (let row = 0; row < board.length - 3; row++) {
-    for (let col = 3; col < board[row].length - 3; col++) {
+    for (let col = 3; col < board[row].length; col++) {
       if (
         board[row][col] != `0` &&
         board[row][col] == board[row + 1][col - 1] &&
@@ -249,10 +251,10 @@ function checkDiagonalTR() {
         board[row][col] == board[row + 3][col - 3]
       ) {
         if (isPlayer1Turn === true) {
-            Swal.fire("Player 2 Won This Round!!");
-          } else {
-            Swal.fire("Player 1 Won This Round!!");
-          }
+          Swal.fire("Player 2 Won This Round!!");
+        } else {
+          Swal.fire("Player 1 Won This Round!!");
+        }
         addPoint();
         playerWin = true;
       }
