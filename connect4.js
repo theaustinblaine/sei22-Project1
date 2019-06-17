@@ -138,16 +138,29 @@ spaces.forEach(space =>
 
 // Add Point to player score on win (test with each move)
 
-let player1Score = $("#player1 .score").text();
-let player2Score = $("#player2 .score").text();
 
 function addPoint() {
+
+    let player1Score = $("#player1 .score").text();
+    let player2Score = $("#player2 .score").text();
+
   if (isPlayer1Turn === false) {
     player1Score = parseInt(player1Score) + 1;
     $("#player1 .score").text(player1Score);
+    if(parseInt(player1Score)===3){
+        Swal.fire("Player 1 Wins The Game!!")
+        $("#player1 .score").text("00");
+        $("#player2 .score").text("00");
+    }
   } else {
     player2Score = parseInt(player2Score) + 1;
     $("#player2 .score").text(player2Score);
+    if(parseInt(player2Score)===3){
+        Swal.fire("Player 2 Wins The Game!!")
+        $("#player1 .score").text("00");
+        $("#player2 .score").text("00");
+
+    }
   }
 }
 
@@ -166,11 +179,11 @@ function checkHorizontal() {
         board[row][col] == board[row][col + 3]
       ) {
         if (isPlayer1Turn === true) {
-          Swal.fire("Player 2 Won!!");
+          Swal.fire("Player 2 Won This Round!!");
         } else {
-          Swal.fire("Player 1 Won!!");
+          Swal.fire("Player 1 Won This Round!!");
         }
-        addPoint();
+        addPoint();x
         playerWin = true;
       }
     }
@@ -189,10 +202,10 @@ function checkVertical() {
         board[row][col] == board[row + 3][col]
       ) {
         if (isPlayer1Turn === true) {
-          Swal.fire("Player 2 Won!!");
-        } else {
-          Swal.fire("Player 1 Won!!");
-        }
+            Swal.fire("Player 2 Won This Round!!");
+          } else {
+            Swal.fire("Player 1 Won This Round!!");
+          }
         addPoint();
         playerWin = true;
       }
@@ -213,10 +226,10 @@ function checkDiagonalTL() {
         board[row][col] == board[row + 3][col + 3]
       ) {
         if (isPlayer1Turn === true) {
-          Swal.fire("Player 2 Won!!");
-        } else {
-          Swal.fire("Player 1 Won!!");
-        }
+            Swal.fire("Player 2 Won This Round!!");
+          } else {
+            Swal.fire("Player 1 Won This Round!!");
+          }
         addPoint();
         playerWin = true;
       }
@@ -236,10 +249,10 @@ function checkDiagonalTR() {
         board[row][col] == board[row + 3][col - 3]
       ) {
         if (isPlayer1Turn === true) {
-          Swal.fire("Player 2 Won!!");
-        } else {
-          Swal.fire("Player 1 Won!!");
-        }
+            Swal.fire("Player 2 Won This Round!!");
+          } else {
+            Swal.fire("Player 1 Won This Round!!");
+          }
         addPoint();
         playerWin = true;
       }
