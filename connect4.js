@@ -1,37 +1,61 @@
 function buildBoard() {
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="A' + col + '" class="empty" data-column="' + col + '"></div>'
+      '<div id="A' +
+        col +
+        '" class="space empty" data-column="' +
+        col +
+        '"></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="B' + col + '" class="empty" data-column="' + col + '"></div>'
+      '<div id="B' +
+        col +
+        '" class="space empty" data-column="' +
+        col +
+        '"></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="C' + col + '" class="empty" data-column="' + col + '")></div>'
+      '<div id="C' +
+        col +
+        '" class="space empty" data-column="' +
+        col +
+        '")></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="D' + col + '" class="empty" data-column="' + col + '")></div>'
+      '<div id="D' +
+        col +
+        '" class="space empty" data-column="' +
+        col +
+        '")></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="E' + col + '" class="empty" data-column="' + col + '")></div>'
+      '<div id="E' +
+        col +
+        '" class="space empty" data-column="' +
+        col +
+        '")></div>'
     );
   }
 
   for (let col = 0; col < 7; col++) {
     $("#game-board").append(
-      '<div id="F' + col + '" class="empty" data-column="' + col + '")></div>'
+      '<div id="F' +
+        col +
+        '" class="space empty" data-column="' +
+        col +
+        '")></div>'
     );
   }
 }
@@ -70,8 +94,6 @@ controls.addEventListener(`click`, function() {
   );
 });
 
-
-
 // populate board matrix with indicator of which spaces are played by each player
 // with each move, check for a win and then reset the board for the next round
 
@@ -80,7 +102,7 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
     `[data-column="${evt.target.dataset.column}"]`
   );
   for (let i = column.length - 1; i >= 0; i--) {
-    if (column[i].className === "empty") {
+    if (column[i].classList.contains("empty")) {
       column[i].classList.remove("empty");
       column[i].classList.add(`${isPlayer1Turn ? "black" : "red"}`);
       board[i][parseInt(evt.target.dataset.column)] = isPlayer1Turn ? "2" : "1";
@@ -90,22 +112,7 @@ document.querySelector("#game-board").addEventListener("click", function(evt) {
       checkDiagonalTL();
       checkDiagonalTR();
       if (playerWin === true) {
-        board = [
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0],
-          [0, 0, 0, 0, 0, 0, 0]
-        ];
-
-        // let redSpaces = document.getElementsByClassName("red");
-        // redSpaces.classList.add("empty");
-        // document.getElementsByClassName('black').classList.add('empty')
-        // redSpaces.classList.remove("red");
-        // document.getElementsByClassName('black').classlist.remove('black')
-
-        playerWin=false
+        reset();
       }
       break;
     }
@@ -238,4 +245,28 @@ function checkDiagonalTR() {
       }
     }
   }
+}
+
+// board reset function
+
+let boardSpace = document.querySelectorAll(".space");
+
+function reset() {
+  board = [
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+  ];
+
+  let redSpaces = document.querySelectorAll(".red");
+  let blackSpaces = document.querySelectorAll(".black");
+
+  boardSpace.forEach(space => space.classList.add("empty"));
+  redSpaces.forEach(redSpace => redSpace.classList.remove("red"));
+  blackSpaces.forEach(blackSpace => blackSpace.classList.remove("black"));
+
+  playerWin = false;
 }
